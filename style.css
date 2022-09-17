@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    height: 100vh;
+    text-align: center;
+}
+
+.game {
+    display: flex;
+    justify-content: space-between;
+    background-color: aquamarine;
+    margin: auto;
+    padding: 50px;
+    gap: 50px
+
+}
+
+.container {
+    padding: 100px;
+    margin: auto;
+    background-color: rgb(130, 202, 142);
+    
+}
+
+button {
+    padding: 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    box-shadow: 10px;
+}
+
+.player_score {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    margin: 10px;
+}
+
+.results, .winner {
+    padding: 20px;
+    margin: 20px;
+}

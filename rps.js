@@ -1,11 +1,20 @@
 
 
-const playerInput = "";
-let playerSelection = playerInput.toLowerCase();
+
+let playerSelection;
 let computerSelection;
 let playerCount = 0;
 let cpuCount = 0;
 let drawCount = 0;
+
+const results = document.getElementsByClassName('results');
+const player_score = document.getElementsByClassName('player_score');
+const cpu_score = document.getElementsByClassName('cpu_score');
+const winner = document.getElementsByClassName('winner');
+
+const btn_rock = document.getElementsByClassName('rock');
+const btn_paper = document.getElementsByClassName('paper');
+const btn_scissors = document.getElementsByClassName('scissors');
 
 /* a function that gets a randomly generated number between 0, 2 and returns a lower case rock, paper, or scissors*/
 function getComputerChoice() {
@@ -23,7 +32,9 @@ function getComputerChoice() {
 /* a function that plays 1 round of rock, paper, scissors */
 function playRound(playerSelection, computerSelection) { 
 
-    playerSelection = prompt("What is your choice?");
+    playerSelection = btn.addEventListener('click', function (e){
+        console.log(e);
+    })
     computerSelection = getComputerChoice(); /* calls the getComputerChoice function */ 
     /**conditionals for comparing win/loss */
     if (playerSelection == "rock" && computerSelection == "scissors") {
@@ -50,9 +61,7 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
     /*loop that interates the playRound function 5 times*/
-    for (let i = 0; i < 5; i++) {
-        playRound(playerSelection, computerSelection);
-    } 
+    
     /**Once loop finishes after five iterations, print the win/draw/loss outcome to the console */
     console.log(`\ Wins: ${playerCount} | Draws: ${drawCount} | Losses: ${cpuCount}`); 
     /**Conditions to see who wins, if its a draw, and who loses */
