@@ -54,7 +54,7 @@ function game() {
         playRound(playerSelection, computerSelection);
     } 
     /**Once loop finishes after five iterations, print the win/draw/loss outcome to the console */
-    console.log(`Wins: ${playerCount} | Draws: ${drawCount} | Losses: ${cpuCount}`); 
+    console.log(`\ Wins: ${playerCount} | Draws: ${drawCount} | Losses: ${cpuCount}`); 
     /**Conditions to see who wins, if its a draw, and who loses */
     if (playerCount > cpuCount) {
         console.log(`You win with best of 5!`);
