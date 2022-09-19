@@ -1,20 +1,53 @@
 
-
-
 let playerSelection;
 let computerSelection;
 let playerCount = 0;
 let cpuCount = 0;
 let drawCount = 0;
 
-const results = document.getElementsByClassName('results');
-const player_score = document.getElementsByClassName('player_score');
-const cpu_score = document.getElementsByClassName('cpu_score');
-const winner = document.getElementsByClassName('winner');
+const results = document.querySelector('.results');
+const player_score = document.querySelector('.player_score');
+const cpu_score = document.querySelector('.cpu_score');
+const winner = document.querySelector('.winner');
+const btn_rock = document.querySelector('.rock');
+const btn_paper = document.querySelector('.paper');
+const btn_scissors = document.querySelector('.scissors');
 
-const btn_rock = document.getElementsByClassName('rock');
-const btn_paper = document.getElementsByClassName('paper');
-const btn_scissors = document.getElementsByClassName('scissors');
+btn_rock.addEventListener('click', function() {
+    results.textContent = '';
+    playRound('rock', getComputerChoice()); 
+
+    if (playerCount == 5){
+        btn_rock.removeEventListener('click', arguments.callee);
+        winner.textContent = "YOU WON 5 GAMES";
+    } else if (cpuCount == 5){
+        winner.textContent = "YOU LOST, CPU WINS 5";
+    }
+});
+
+btn_paper.addEventListener('click', function() {
+    results.textContent = '';
+    playRound('paper', getComputerChoice());
+
+    if (playerCount == 5){
+        btn_paper.removeEventListener('click', arguments.callee);
+        winner.textContent = "YOU WON 5 GAMES";
+    } else if (cpuCount == 5){
+        winner.textContent = "YOU LOST, CPU WINS 5";
+    }
+});
+
+btn_scissors.addEventListener('click', function() {
+    results.textContent = '';
+    playRound('scissors', getComputerChoice());
+
+    if (playerCount == 5){
+        btn_scissors.removeEventListener('click', arguments.callee);
+        winner.textContent = "YOU WON 5 GAMES";
+    } else if (cpuCount == 5){
+        winner.textContent = "YOU LOST, CPU WINS 5";
+    }
+});
 
 /* a function that gets a randomly generated number between 0, 2 and returns a lower case rock, paper, or scissors*/
 function getComputerChoice() {
@@ -32,46 +65,33 @@ function getComputerChoice() {
 /* a function that plays 1 round of rock, paper, scissors */
 function playRound(playerSelection, computerSelection) { 
 
-    playerSelection = btn.addEventListener('click', function (e){
-        console.log(e);
-    })
     computerSelection = getComputerChoice(); /* calls the getComputerChoice function */ 
-    /**conditionals for comparing win/loss */
+
     if (playerSelection == "rock" && computerSelection == "scissors") {
         playerCount++; /**Everytime a condition is evaluated, playerCount, drawCount and cpuCount can have their values incremented */
-        return console.log(`You win! ${playerSelection} beats ${computerSelection} !`);
-
+        player_score.textContent = `PLAYER WINS: ${playerCount}`;
+        return results.textContent = `YOU WIN! ${playerSelection.toUpperCase()} BEATS ${computerSelection.toUpperCase()} !`;
+        
     } else if (playerSelection == "scissors" && computerSelection == "paper") {
         playerCount++;
-        return console.log(`You win! ${playerSelection} beats ${computerSelection} !`);
+        player_score.textContent = `PLAYER WINS: ${playerCount}`;
+        return results.textContent = `YOU WIN! ${playerSelection.toUpperCase()} BEATS ${computerSelection.toUpperCase()} !`;
         
     } else if (playerSelection == "paper" && computerSelection == "rock") {
         playerCount++;
-        return console.log(`You win! ${playerSelection} beats ${computerSelection} !`);
-        
+        player_score.textContent = `PLAYER WINS: ${playerCount}`;
+        return results.textContent = `YOU WIN! ${playerSelection.toUpperCase()} BEATS ${computerSelection.toUpperCase()} !`;
+         
     } else if (playerSelection == computerSelection) {
-        drawCount++
-        return console.log(`It's a TIE! ${playerSelection} cannot beat ${computerSelection}`);
+        playerCount++;
+        cpuCount++;
+        player_score.textContent = `PLAYER WINS: ${playerCount}`;
+        cpu_score.textContent = `CPU WINS: ${cpuCount}`;
+        return results.textContent = `IT'S A TIE ${playerSelection.toUpperCase()} CANNOT BEAT ${computerSelection.toUpperCase()} !`;
     
     } else {
         cpuCount++;
-        return console.log(`You lose!! ${computerSelection} beats ${playerSelection}`);
+        cpu_score.textContent = `CPU WINS: ${cpuCount}`;
+        return results.textContent = `You lose!! ${computerSelection.toUpperCase()} BEATS ${playerSelection.toUpperCase()}`;
     }
 }
-
-function game() {
-    /*loop that interates the playRound function 5 times*/
-    
-    /**Once loop finishes after five iterations, print the win/draw/loss outcome to the console */
-    console.log(`\ Wins: ${playerCount} | Draws: ${drawCount} | Losses: ${cpuCount}`); 
-    /**Conditions to see who wins, if its a draw, and who loses */
-    if (playerCount > cpuCount) {
-        console.log(`You win with best of 5!`);
-    } else if (playerCount < cpuCount) {
-        console.log(`You lose with worst of 5!`);
-    } else if (playerCount === cpuCount) {
-        console.log(`It's a draw`);
-    }
-}
-
-game(); /*runs the game*/
