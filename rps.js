@@ -9,9 +9,6 @@ const results = document.querySelector('.results');
 const player_score = document.querySelector('.player_score');
 const cpu_score = document.querySelector('.cpu_score');
 const winner = document.querySelector('.winner');
-/*const btn_rock = document.querySelector('.rock');
-const btn_paper = document.querySelector('.paper');
-const btn_scissors = document.querySelector('.scissors');*/
 
 let btns = document.querySelectorAll('button');
 
