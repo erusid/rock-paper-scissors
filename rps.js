@@ -9,44 +9,24 @@ const results = document.querySelector('.results');
 const player_score = document.querySelector('.player_score');
 const cpu_score = document.querySelector('.cpu_score');
 const winner = document.querySelector('.winner');
-const btn_rock = document.querySelector('.rock');
+/*const btn_rock = document.querySelector('.rock');
 const btn_paper = document.querySelector('.paper');
-const btn_scissors = document.querySelector('.scissors');
+const btn_scissors = document.querySelector('.scissors');*/
 
-btn_rock.addEventListener('click', function() {
-    results.textContent = '';
-    playRound('rock', getComputerChoice()); 
+let btns = document.querySelectorAll('button');
 
-    if (playerCount == 5){
-        btn_rock.removeEventListener('click', arguments.callee);
-        winner.textContent = "YOU WON 5 GAMES";
-    } else if (cpuCount == 5){
+btns.forEach(function(i){
+
+    i.addEventListener('click', function(e) {
+
+        results.textContent = '';
+        console.log(e.target.className);
+        playRound(e.target.className, getComputerChoice());
+
+        i.removeEventListener('click', arguments.callee);
         winner.textContent = "YOU LOST, CPU WINS 5";
-    }
-});
-
-btn_paper.addEventListener('click', function() {
-    results.textContent = '';
-    playRound('paper', getComputerChoice());
-
-    if (playerCount == 5){
-        btn_paper.removeEventListener('click', arguments.callee);
-        winner.textContent = "YOU WON 5 GAMES";
-    } else if (cpuCount == 5){
-        winner.textContent = "YOU LOST, CPU WINS 5";
-    }
-});
-
-btn_scissors.addEventListener('click', function() {
-    results.textContent = '';
-    playRound('scissors', getComputerChoice());
-
-    if (playerCount == 5){
-        btn_scissors.removeEventListener('click', arguments.callee);
-        winner.textContent = "YOU WON 5 GAMES";
-    } else if (cpuCount == 5){
-        winner.textContent = "YOU LOST, CPU WINS 5";
-    }
+        
+    });
 });
 
 /* a function that gets a randomly generated number between 0, 2 and returns a lower case rock, paper, or scissors*/
