@@ -16,7 +16,6 @@ btns.forEach(function(i) {
 
     i.addEventListener('click', function(e) {
         results.textContent = '';
-        console.log(e);
         playRound(e.target.className, getComputerChoice());
         
         if (playerCount == 5) {
