@@ -12,17 +12,18 @@ const winner = document.querySelector('.winner');
 
 let btns = document.querySelectorAll('button');
 
-btns.forEach(function(i){
+btns.forEach(function(i) {
 
     i.addEventListener('click', function(e) {
-
         results.textContent = '';
-        console.log(e.target.className);
+        console.log(e);
         playRound(e.target.className, getComputerChoice());
-
-        i.removeEventListener('click', arguments.callee);
-        winner.textContent = "YOU LOST, CPU WINS 5";
         
+        if (playerCount == 5) {
+            winner.textContent = `YOU WON 5 GAMES!`;
+        }else if (cpuCount == 5) {
+            winner.textContent = `YOU LOSE! CPU WINS 5`;
+        }
     });
 });
 
@@ -64,7 +65,7 @@ function playRound(playerSelection, computerSelection) {
         cpuCount++;
         player_score.textContent = `PLAYER WINS: ${playerCount}`;
         cpu_score.textContent = `CPU WINS: ${cpuCount}`;
-        return results.textContent = `IT'S A TIE ${playerSelection.toUpperCase()} CANNOT BEAT ${computerSelection.toUpperCase()} !`;
+        return results.textContent = `IT'S A TIE!!`;
     
     } else {
         cpuCount++;
