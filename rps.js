@@ -12,19 +12,27 @@ const winner = document.querySelector('.winner');
 
 let btns = document.querySelectorAll('button');
 
-btns.forEach(function(i) {
+btns.forEach(function(item) {
 
-    i.addEventListener('click', function(e) {
+    item.addEventListener('click', function(event) {
         results.textContent = '';
-        playRound(e.target.className, getComputerChoice());
+        playRound(event.target.className, getComputerChoice());
         
         if (playerCount == 5) {
+            for (i = 1; i < btns.length; i++) {
+                item.removeEventListener('click', arguments.callee);
+            }
             winner.textContent = `YOU WON 5 GAMES!`;
+
         }else if (cpuCount == 5) {
+            for (i = 1; i < btns.length; i++) {
+                item.removeEventListener('click', arguments.callee);
+            }
             winner.textContent = `YOU LOSE! CPU WINS 5`;
         }
     });
 });
+
 
 /* a function that gets a randomly generated number between 0, 2 and returns a lower case rock, paper, or scissors*/
 function getComputerChoice() {
