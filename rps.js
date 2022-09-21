@@ -19,12 +19,14 @@ btns.forEach(function(item) {
         playRound(event.target.className, getComputerChoice());
         
         if (playerCount == 5) {
+
             for (i = 1; i < btns.length; i++) {
                 item.removeEventListener('click', arguments.callee);
             }
             winner.textContent = `YOU WON 5 GAMES!`;
 
         }else if (cpuCount == 5) {
+
             for (i = 1; i < btns.length; i++) {
                 item.removeEventListener('click', arguments.callee);
             }
@@ -32,7 +34,6 @@ btns.forEach(function(item) {
         }
     });
 });
-
 
 /* a function that gets a randomly generated number between 0, 2 and returns a lower case rock, paper, or scissors*/
 function getComputerChoice() {
